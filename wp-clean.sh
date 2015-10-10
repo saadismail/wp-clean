@@ -105,3 +105,28 @@ echo "Go to /home/$1/public_html/wp-content/themes to make sure that no un-neces
 
 echo "Username: admin"
 echo "Password: ${newwppass}"
+
+echo "Do you also want me to remove all themes & download a fresh one?"
+echo "1 for yes, 0 for no"
+read themeconfirm
+
+if [[ $themeconfirm == "1" ]]; then
+	echo "Let me know the direct link to theme which is currently configured"
+	read themelink
+	filename=$(basename "$themelink")
+	if [[ ! $themelink ]]; then
+			echo "Couldn't find theme link, exiting"
+			exit
+	fi
+	cd /home/$1/public_html/wp-content/themes
+	mv index.php .index.php
+	rm -rf *
+	wget $themelink
+	echo "Is it tar on zip? tar for tar.gz, zip for .zip"
+	read tarorzip
+	if [[ $tarorzip == "tar" ]]; then
+			tar zxvf $filename
+	elif [[ $tarorzip == "zip" ]]; then
+			unzip $filename
+	fi
+fi
