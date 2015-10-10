@@ -4,7 +4,7 @@
 <b>Usage:</b>
 
 <ol>
-<li>Download this script with this link:</li>
+<li>Download this script with this command: wget https://raw.githubusercontent.com/saadismail/wp-clean/master/wp-clean.sh
 <li>chmod +x wp-clean.sh</li>
 <li>./wp-clean.sh $CPANEL_USERNAME</li>
 </ol>
