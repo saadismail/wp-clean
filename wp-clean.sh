@@ -28,7 +28,7 @@ fi
 
 # Creating directories & files needed
 mkdir -p /tmp/infectwp/log/
-mkdir /tmp/infectwp/plugins/
+mkdir -p /tmp/infectwp/plugins/
 touch /tmp/infectwp/log/${1}.txt
 if [[ ! -e $tmpdir ]]; then
 	mkdir $tmpdir
@@ -177,6 +177,7 @@ if [[ $themeconfirm == "1" ]]; then
 		else
 			echo "Theme isn't in zip/tar/tar.gz form"
 		fi
+		rm -f /home/$1/public_html/wp-content/themes/$filename
 		mv ${tmpdir}/wp-themes-index.php /home/$1/public_html/wp-content/themes/index.php
 	else
 		echo "Couldn't download from ${themelink}"
