@@ -111,6 +111,7 @@ cd ${dir}
 db_name=`cat wp-config.php | grep DB_NAME | cut -d \' -f 4`
 db_user=`cat wp-config.php | grep DB_USER | cut -d \' -f 4`
 db_pass=`cat wp-config.php | grep DB_PASSWORD | cut -d \' -f 4`
+db_prefix=$(cat wp-config.php | grep "\$table_prefix" | cut -d \' -f 2)
 
 # Showing all usernames to make sure that I don't reset password of wrong user
 mysql -D${db_name} -u${db_user} -p${db_pass} << "EOF"
