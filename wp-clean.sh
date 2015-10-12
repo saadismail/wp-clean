@@ -60,6 +60,21 @@ rm -f ${dir}/latest.zip
 rm -rf ${dir}/wordpress
 # Wordpress core part ends here
 
+# Removing all un-necessary files
+cd ${dir}/wp-content
+find ! -name 'index.php' -type f -exec rm -f {} +
+
+cd ${dir}/wp-content/uploads
+find ! -name 'index.php' -type f -exec rm -f {} +
+
+cd ${dir}/wp-content/themes
+find ! -name 'index.php' -type f -exec rm -f {} +
+
+cd ${dir}/wp-content/themes
+find ! -name 'index.php' -type f -exec rm -f {} +
+
+rm -rf ${dir}/wp-content/uploads/2016
+
 # Wordpress plugin part starts from here
 cd ${dir}/wp-content/plugins
 for plugin in *; do
@@ -187,4 +202,3 @@ if [[ $themeconfirm == "1" ]]; then
 	chown -R ${1}:${1} ${dir}
 	chown ${1}:nobody ${dir}
 fi
-
